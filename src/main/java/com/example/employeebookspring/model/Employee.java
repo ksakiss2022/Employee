@@ -1,6 +1,10 @@
 package com.example.employeebookspring.model;
 
-public class Employee {
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+public abstract class Employee {
 
     private static int counter;
     private Integer id;
@@ -17,6 +21,9 @@ public class Employee {
         this.department = department;
         this.salary = salary;
         this.id = counter++;
+    }
+
+    public Employee() {
     }
 
     public static int getCounter() {
@@ -55,4 +62,15 @@ public class Employee {
     }
 
 
+    public abstract Set<Integer> getExistingDepartments();
+
+    public abstract List<Employee> getEmployeesFromDepartment(int departmentId);
+
+    public abstract int getSalarySumOfDepartament(int departamentId);
+
+    public abstract Map<Integer, List<Employee>> getEmployeesByDepartament();
+
+    public abstract int getMinSalaryOfDepartament(int departamantId);
+
+    public abstract int getMaxSalaryOfDepartament(int departamantId);
 }
