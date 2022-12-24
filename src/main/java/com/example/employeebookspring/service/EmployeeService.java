@@ -5,10 +5,7 @@ import com.example.employeebookspring.record.EmployeeRequest;
 import io.micrometer.common.util.StringUtils;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 @Service
 
@@ -27,7 +24,37 @@ public class EmployeeService {
         Employee employee = new Employee(employeeRequest.getFirstName(),
                 employeeRequest.getLastName(),
                 employeeRequest.getDepartment(),
-                employeeRequest.getSalary());
+                employeeRequest.getSalary()) {
+            @Override
+            public Set<Integer> getExistingDepartments() {
+                return null;
+            }
+
+            @Override
+            public List<Employee> getEmployeesFromDepartment(int departmentId) {
+                return null;
+            }
+
+            @Override
+            public int getSalarySumOfDepartament(int departamentId) {
+                return 0;
+            }
+
+            @Override
+            public Map<Integer, List<Employee>> getEmployeesByDepartament() {
+                return null;
+            }
+
+            @Override
+            public int getMinSalaryOfDepartament(int departamantId) {
+                return 0;
+            }
+
+            @Override
+            public int getMaxSalaryOfDepartament(int departamantId) {
+                return 0;
+            }
+        };
         this.employees.put(employee.getId(), employee);
         return employee;
     }
