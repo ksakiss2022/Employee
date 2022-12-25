@@ -25,11 +25,13 @@ public class DepartamentService extends Employee {
         return employeeRepository.getEmployees().stream().map(Employee::getDepartment).collect(Collectors.toSet());
     }
 
+
     @Override
     public List<Employee> getEmployeesFromDepartment(int departmentId) {
         return employeeRepository.getEmployees()
                 .stream().filter(employee -> employee.getDepartment() == departmentId).collect(Collectors.toList());
     }
+
 
     @Override
     public int getSalarySumOfDepartament(int departamentId) {
