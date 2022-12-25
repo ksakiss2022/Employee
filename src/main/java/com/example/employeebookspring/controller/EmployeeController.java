@@ -22,7 +22,7 @@ public class EmployeeController {
 
     @GetMapping("/employees")
     public Collection<Employee> GetAllEmployees() {
-        return this.employeeService.getAllEmplxoyees();
+        return this.employeeService.getAllEmployees();
     }
 
     @PostMapping("/employees")

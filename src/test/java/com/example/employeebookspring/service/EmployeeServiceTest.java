@@ -19,8 +19,6 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class EmployeeServiceTest {
     @Mock
-    private EmployeeRepository employeeRepository;
-    @InjectMocks
     private EmployeeService employeeService;
 
     private List<Employee> actualEmployees;
@@ -28,106 +26,16 @@ class EmployeeServiceTest {
 
     @BeforeEach
     public void setUp() {
-        employee1 = new Employee("Dima", "Petrov", 1, 20000) {
-            @Override
-            public Set<Integer> getExistingDepartments() {
-                return null;
-            }
-
-            @Override
-            public List<Employee> getEmployeesFromDepartment(int departmentId) {
-                return null;
-            }
-
-            @Override
-            public int getSalarySumOfDepartament(int departamentId) {
-                return 0;
-            }
-
-            @Override
-            public Map<Integer, List<Employee>> getEmployeesByDepartament() {
-                return null;
-            }
-
-            @Override
-            public int getMinSalaryOfDepartament(int departamantId) {
-                return 0;
-            }
-
-            @Override
-            public int getMaxSalaryOfDepartament(int departamantId) {
-                return 0;
-            }
-        };
-        Employee employee2 = new Employee("Julia", "Blohina", 2, 30000) {
-            @Override
-            public Set<Integer> getExistingDepartments() {
-                return null;
-            }
-
-            @Override
-            public List<Employee> getEmployeesFromDepartment(int departmentId) {
-                return null;
-            }
-
-            @Override
-            public int getSalarySumOfDepartament(int departamentId) {
-                return 0;
-            }
-
-            @Override
-            public Map<Integer, List<Employee>> getEmployeesByDepartament() {
-                return null;
-            }
-
-            @Override
-            public int getMinSalaryOfDepartament(int departamantId) {
-                return 0;
-            }
-
-            @Override
-            public int getMaxSalaryOfDepartament(int departamantId) {
-                return 0;
-            }
-        };
-        Employee employee3 = new Employee("Natali", "Coval", 3, 60000) {
-            @Override
-            public Set<Integer> getExistingDepartments() {
-                return null;
-            }
-
-            @Override
-            public List<Employee> getEmployeesFromDepartment(int departmentId) {
-                return null;
-            }
-
-            @Override
-            public int getSalarySumOfDepartament(int departamentId) {
-                return 0;
-            }
-
-            @Override
-            public Map<Integer, List<Employee>> getEmployeesByDepartament() {
-                return null;
-            }
-
-            @Override
-            public int getMinSalaryOfDepartament(int departamantId) {
-                return 0;
-            }
-
-            @Override
-            public int getMaxSalaryOfDepartament(int departamantId) {
-                return 0;
-            }
-        };
+        employee1 = new Employee("Dima", "Petrov", 1, 20000) {};
+        Employee employee2 = new Employee("Julia", "Blohina", 2, 30000) {};
+        Employee employee3 = new Employee("Natali", "Coval", 3, 60000) {};
         actualEmployees = new ArrayList<>(List.of(employee1, employee2, employee3));
-        when(employeeRepository.getEmployees()).thenReturn(actualEmployees);
+        when(employeeService.getAllEmployees()).thenReturn(actualEmployees);
     }
 
     @Test
     void getAllEmplxoyees() {
-        List<Employee> expected = (List<Employee>) employeeService.getAllEmplxoyees();
+        List<Employee> expected = (List<Employee>) employeeService.getAllEmployees();
         assertEquals(expected, actualEmployees);
 
     }
@@ -142,7 +50,7 @@ class EmployeeServiceTest {
         employee.setDepartment(actual.getDepartment());
         employee.setSalary(actual.getSalary());
 
-        when(employeeRepository.getLostId()).thenReturn(0);
+        when(employeeService.getLostId()).thenReturn(0);
         Employee expected = employeeService.addEmployee(employee);
         assertEquals(expected, actual);
 

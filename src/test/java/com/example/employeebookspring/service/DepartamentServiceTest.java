@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
 class DepartamentServiceTest {
 
     @Mock
-    private EmployeeRepository employeeRepository;
+    private EmployeeService employeeService;
    // private Employee employee;
     @InjectMocks
     private DepartamentService departamentService;
@@ -33,100 +33,13 @@ class DepartamentServiceTest {
     public void setUp() {
 
         Employee employee1 = new Employee("Dima", "Petrov", 1, 20000) {
-            @Override
-            public Set<Integer> getExistingDepartments() {
-                return null;
-            }
-
-            @Override
-            public List<Employee> getEmployeesFromDepartment(int departmentId) {
-                return null;
-            }
-
-            @Override
-            public int getSalarySumOfDepartament(int departamentId) {
-                return 0;
-            }
-
-            @Override
-            public Map<Integer, List<Employee>> getEmployeesByDepartament() {
-                return null;
-            }
-
-            @Override
-            public int getMinSalaryOfDepartament(int departamantId) {
-                return 0;
-            }
-
-            @Override
-            public int getMaxSalaryOfDepartament(int departamantId) {
-                return 0;
-            }
         };
         Employee employee2 = new Employee("Julia", "Blohina", 2, 30000) {
-            @Override
-            public Set<Integer> getExistingDepartments() {
-                return null;
-            }
-
-            @Override
-            public List<Employee> getEmployeesFromDepartment(int departmentId) {
-                return null;
-            }
-
-            @Override
-            public int getSalarySumOfDepartament(int departamentId) {
-                return 0;
-            }
-
-            @Override
-            public Map<Integer, List<Employee>> getEmployeesByDepartament() {
-                return null;
-            }
-
-            @Override
-            public int getMinSalaryOfDepartament(int departamantId) {
-                return 0;
-            }
-
-            @Override
-            public int getMaxSalaryOfDepartament(int departamantId) {
-                return 0;
-            }
         };
         Employee employee3 = new Employee("Natali", "Coval", 3, 60000) {
-            @Override
-            public Set<Integer> getExistingDepartments() {
-                return null;
-            }
-
-            @Override
-            public List<Employee> getEmployeesFromDepartment(int departmentId) {
-                return null;
-            }
-
-            @Override
-            public int getSalarySumOfDepartament(int departamentId) {
-                return 0;
-            }
-
-            @Override
-            public Map<Integer, List<Employee>> getEmployeesByDepartament() {
-                return null;
-            }
-
-            @Override
-            public int getMinSalaryOfDepartament(int departamantId) {
-                return 0;
-            }
-
-            @Override
-            public int getMaxSalaryOfDepartament(int departamantId) {
-                return 0;
-            }
         };
         actualEmployees = new ArrayList<>(List.of(employee1, employee2, employee3));
-        when(employeeRepository.getEmployees()).thenReturn(actualEmployees);
+        when(employeeService.getAllEmployees()).thenReturn(actualEmployees);
     }
 
 

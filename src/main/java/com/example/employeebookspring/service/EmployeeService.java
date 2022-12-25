@@ -13,7 +13,7 @@ public class EmployeeService {
     private final Map<Integer, Employee> employees = new HashMap<>();
 
 
-    public Collection<Employee> getAllEmplxoyees() {
+    public Collection<Employee> getAllEmployees() {
         return this.employees.values();
     }
 
@@ -25,35 +25,6 @@ public class EmployeeService {
                 employeeRequest.getLastName(),
                 employeeRequest.getDepartment(),
                 employeeRequest.getSalary()) {
-            @Override
-            public Set<Integer> getExistingDepartments() {
-                return null;
-            }
-
-            @Override
-            public List<Employee> getEmployeesFromDepartment(int departmentId) {
-                return null;
-            }
-
-            @Override
-            public int getSalarySumOfDepartament(int departamentId) {
-                return 0;
-            }
-
-            @Override
-            public Map<Integer, List<Employee>> getEmployeesByDepartament() {
-                return null;
-            }
-
-            @Override
-            public int getMinSalaryOfDepartament(int departamantId) {
-                return 0;
-            }
-
-            @Override
-            public int getMaxSalaryOfDepartament(int departamantId) {
-                return 0;
-            }
         };
         this.employees.put(employee.getId(), employee);
         return employee;
@@ -89,4 +60,24 @@ public class EmployeeService {
                 throw new EmployeeSeviceExeption("Не верно заданы поля имя или фамилия!");
             }
         }
+
+   private static int lostId;
+  //  private final List<Employee> employees;
+
+   // public EmployeeRepository(List<Employee> employees) {
+   //     this.employees = employees;
+  //  }
+
+   // public List<Employee> getEmployees() {
+     //   return employees;
+  //  }
+
+//    public void addEmployee(Employee employee) {
+//     employees.add(employee);
+//     ++lostId;
+//   }
+
+    public int getLostId() {
+   return lostId;
+    }
 }
