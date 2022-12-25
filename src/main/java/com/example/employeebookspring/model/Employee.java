@@ -23,12 +23,15 @@ public abstract class Employee {
         this.id = counter++;
     }
 
-    public Employee() {
+    protected Employee() {
     }
 
-    public static int getCounter() {
-        return counter;
-    }
+//    public Employee() {
+//    }
+
+  //  public static int getCounter() {
+   //     return counter;
+   // }
 
     public Integer getId() {
         return id;
