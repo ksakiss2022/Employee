@@ -11,24 +11,24 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class DepartamentService extends Employee {
+public class DepartamentService implements DepartamentService1 {
 
-    private final EmployeeRepository employeeRepository;
+    private final EmployeeService employeeService;
 
-    @Autowired
-    public DepartamentService(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
+
+    public DepartamentService(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
     @Override
     public Set<Integer> getExistingDepartments() {
-        return employeeRepository.getEmployees().stream().map(Employee::getDepartment).collect(Collectors.toSet());
+        return employeeService.getAllEmployees().stream().map(Employee::getDepartment).collect(Collectors.toSet());
     }
 
 
     @Override
     public List<Employee> getEmployeesFromDepartment(int departmentId) {
-        return employeeRepository.getEmployees()
+        return employeeService.getAllEmployees()
                 .stream().filter(employee -> employee.getDepartment() == departmentId).collect(Collectors.toList());
     }
 

@@ -17,7 +17,6 @@ import java.util.Map;
 public class DepartamentController {
     private final DepartamentService departamentService;
 
-    @Autowired
     public DepartamentController(DepartamentService departamentService) {
         this.departamentService = departamentService;
     }
