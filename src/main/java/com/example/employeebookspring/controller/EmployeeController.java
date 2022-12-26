@@ -31,11 +31,6 @@ public class EmployeeController {
 
     }
 
-//    @GetMapping("/employees")
-//    public int getSalarySum() {
-//        return this.employeeService.getSalarySum();
-//
-//    }
 
     @GetMapping("/employees/salary/sum")
     public int getSalarySum() {
@@ -57,7 +52,5 @@ public class EmployeeController {
         return this.employeeService.getAverageSalary();
 
     }
-//    public void getAllEmployees() {
-//    }
 }
 

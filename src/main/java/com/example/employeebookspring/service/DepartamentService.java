@@ -1,8 +1,6 @@
 package com.example.employeebookspring.service;
 
 import com.example.employeebookspring.model.Employee;
-import com.example.employeebookspring.repositories.EmployeeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,7 +9,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class DepartamentService implements DepartamentService1 {
+public class DepartamentService implements DepartamentServiceImpl {
 
     private final EmployeeService employeeService;
 
@@ -28,8 +26,7 @@ public class DepartamentService implements DepartamentService1 {
 
     @Override
     public List<Employee> getEmployeesFromDepartment(int departmentId) {
-        return employeeService.getAllEmployees()
-                .stream().filter(employee -> employee.getDepartment() == departmentId).collect(Collectors.toList());
+        return employeeService.getAllEmployees().stream().filter(employee -> employee.getDepartment() == departmentId).collect(Collectors.toList());
     }
 
 
@@ -40,8 +37,7 @@ public class DepartamentService implements DepartamentService1 {
 
     @Override
     public Map<Integer, List<Employee>> getEmployeesByDepartament() {
-        return getExistingDepartments().stream().collect(Collectors
-                .toMap(dept -> dept, this::getEmployeesFromDepartment));
+        return getExistingDepartments().stream().collect(Collectors.toMap(dept -> dept, this::getEmployeesFromDepartment));
     }
 
     @Override
