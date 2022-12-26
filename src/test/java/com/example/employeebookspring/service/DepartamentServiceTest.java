@@ -1,7 +1,6 @@
 package com.example.employeebookspring.service;
 
 import com.example.employeebookspring.model.Employee;
-import com.example.employeebookspring.repositories.EmployeeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,7 +22,7 @@ class DepartamentServiceTest {
 
     @Mock
     private EmployeeService employeeService;
-   // private Employee employee;
+
     @InjectMocks
     private DepartamentService departamentService;
     private List<Employee> actualEmployees;
