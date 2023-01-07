@@ -5,40 +5,44 @@ import com.example.employeebookspring.record.EmployeeRequest;
 import io.micrometer.common.util.StringUtils;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.NoSuchElementException;
 
 @Service
 
 public class EmployeeService {
-    private final Map<Integer, Employee> employees = new HashMap<>();
-
-
     public Collection<Employee> getAllEmployees() {
         return this.employees.values();
     }
+    private final Map<Integer, Employee> employees = new HashMap<>();
 
-    public Employee addEmployee(EmployeeRequest employeeRequest) {
+
+    public Employee addEmployee(EmployeeRequest employeeRequest){
         if (employeeRequest.getFirstName() == null || employeeRequest.getLastName() == null) {
             throw new IllegalArgumentException("Проверьте поле имя не должно быть пустым");
         }
         Employee employee = new Employee(employeeRequest.getFirstName(),
                 employeeRequest.getLastName(),
                 employeeRequest.getDepartment(),
-                employeeRequest.getSalary()) {
-        };
+                employeeRequest.getSalary());
         this.employees.put(employee.getId(), employee);
         return employee;
     }
 
-    public int getSalarySum() {
+
+    public int getSalarySum(){
         return employees.values().stream().mapToInt(Employee::getSalary).sum();
-    }
+    };
+
 
     public int getSaleryMax() {
         return employees.values().stream()
                 .mapToInt(Employee::getSalary)
                 .max().orElseThrow(NoSuchElementException::new);
     }
+
 
     public int getSaleryMin() {
         return employees.values().stream()
