@@ -31,11 +31,11 @@ public class EmployeeController {
 
     }
 
-
     @GetMapping("/employees/salary/sum")
     public int getSalarySum() {
         return this.employeeService.getSalarySum();
     }
+
 
     @GetMapping("/employees/salary/max")
     public int getSaleryMax() {

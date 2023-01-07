@@ -1,10 +1,8 @@
 package com.example.employeebookspring.model;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import com.example.employeebookspring.record.EmployeeRequest;
 
-public class Employee {
+public class Employee extends EmployeeRequest {
 
     private static int counter;
     private Integer id;
@@ -20,6 +18,7 @@ public class Employee {
         this.salary = salary;
         this.id = counter++;
     }
+
     public Integer getId() {
         return id;
     }
@@ -36,6 +35,8 @@ public class Employee {
         return department;
     }
 
+    //    public static int getSalary(int i) {return salary;
+//    }
     public int getSalary() {
         return salary;
     }
@@ -44,4 +45,6 @@ public class Employee {
     public String toString() {
         return "Employee{" + "id=" + id + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", department=" + department + ", salary=" + salary + '}';
     }
+
+
 }

@@ -47,7 +47,6 @@ class DepartamentServiceTest {
         final Set<Integer> actual = actualEmployees.stream().map(Employee::getDepartment).collect(Collectors.toSet());
         final Set<Integer> expected = departamentService.getExistingDepartments();
         assertEquals(expected, actual);
-
     }
 
     @Test
@@ -59,6 +58,7 @@ class DepartamentServiceTest {
         assertEquals(expected, actual);
     }
 
+
     @Test
     void getSalarySumOfDepartament() {
         final int departmentId = 1;
@@ -67,6 +67,7 @@ class DepartamentServiceTest {
         final int expected = departamentService.getSalarySumOfDepartament(departmentId);
         assertEquals(expected, actual);
     }
+
 
     @Test
     void getEmployeesByDepartament() {

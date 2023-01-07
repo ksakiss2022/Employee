@@ -29,15 +29,16 @@ public class DepartamentService implements DepartamentServiceImpl {
         return employeeService.getAllEmployees().stream().filter(employee -> employee.getDepartment() == departmentId).collect(Collectors.toList());
     }
 
-
     @Override
     public int getSalarySumOfDepartament(int departamentId) {
         return getEmployeesFromDepartment(departamentId).stream().mapToInt(Employee::getSalary).sum();
     }
 
+
     @Override
     public Map<Integer, List<Employee>> getEmployeesByDepartament() {
         return getExistingDepartments().stream().collect(Collectors.toMap(dept -> dept, this::getEmployeesFromDepartment));
+
     }
 
     @Override
